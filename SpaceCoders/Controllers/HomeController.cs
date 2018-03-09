@@ -10,9 +10,10 @@ namespace SpaceCoders.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var image = await NasaImage.RequestApod();
+            return View(image);
         }
 
         public IActionResult About()
